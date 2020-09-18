@@ -4,8 +4,10 @@
 # the file with the format
 set -e
 
-DESTINATION=/srv/logs/
-DURATION=10
+DESTINATION=/srv/logs
+DURATION="600"
 FILENAME=`(date +%Y.%m.%d_%H.%M.%S)`-`(date -d "+$DURATION sec" +%H.%M.%S)`
 
-ffmpeg -i $ICECAST_SOURCE -r 44100 -ab 160k -t $DURATION $DESTINATION/$FILENAME.mp3 1>/dev/null
+while : ; do
+    ffmpeg -t $DURATION -i $ICECAST_SOURCE -r 44100 -ab 160k $DESTINATION/$FILENAME.mp3 1>/dev/null
+done
