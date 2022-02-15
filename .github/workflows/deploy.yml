@@ -24,7 +24,7 @@ jobs:
         name: Build & push Docker image
         with:
           image: {{ env.CI_REGISTRY_IMAGE }}
-          tags: v1, latest
+          tags: latest, {{ github.sha }}
           registry: dockerhub.io
           dockerfile: ./Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
