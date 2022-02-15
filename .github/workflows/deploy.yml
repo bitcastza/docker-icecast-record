@@ -36,4 +36,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.CI_REGISTRY_IMAGE}}:latest
-
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ CI_REGISTRY_IMAGE }}:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{ CI_REGISTRY_IMAGE }}:buildcache,mode=max
