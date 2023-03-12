@@ -13,7 +13,7 @@ jobs:
       - name: Check out repositrory code
         uses: actions/checkout@v3
       
-      - uses: mr-smithers-excellent/docker-build-push@v5
+      - uses: mr-smithers-excellent/docker-build-push@v6
         name: Build & push Docker image
         with:
           image: ${{ secrets.CI_REGISTRY_IMAGE }}
